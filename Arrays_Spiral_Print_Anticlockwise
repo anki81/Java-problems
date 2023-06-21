@@ -1,0 +1,73 @@
+ import java.util.Scanner;
+
+public class Arrays_Spiral_Print_Anticlockwise {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		 Scanner sc = new Scanner(System.in);
+			int M = sc.nextInt();
+			int N = sc.nextInt();
+			int[][] a = new int[M][N];
+			for (int i = 0; i < a.length; i++) {
+				for (int j = 0; j < a[0].length; j++) {
+					a[i][j] = sc.nextInt();
+				}
+
+			}
+
+			antispiral(a, M, N);
+
+		}
+
+		public static void antispiral(int[][] a, int M, int N) {
+
+			int minr = 0;
+			int maxr = a.length - 1;
+
+			int minc = 0;
+			int maxc = a[0].length - 1;
+
+			int total = M * N;
+			int count = 0;
+
+			while (count < total) {
+
+				for (int i = minr; i <= maxr && count < total; i++) {
+					System.out.print(a[i][minc] + ", ");
+					count++;
+				}
+
+				minc++;
+
+				for (int i = minc; i <= maxc && count < total; i++) {
+
+					System.out.print(a[maxr][i] + ", ");
+					count++;
+				}
+
+				maxr--;
+
+				for (int i = maxr; i >= minr && count < total; i--) {
+
+					System.out.print(a[i][maxc] + ", ");
+					count++;
+
+				}
+
+				maxc--;
+
+				for (int i = maxc; i >= minc && count < total; i--) {
+
+					System.out.print(a[minr][i] + ", ");
+					count++;
+				}
+
+				minr++;
+			}
+			
+			System.out.print("END");
+
+		}
+
+	}
